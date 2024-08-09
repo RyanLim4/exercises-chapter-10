@@ -94,6 +94,7 @@ class CyclicGroup(Group):
 
     def _validate(self, value):
         """Ensure that value is a legitimate element value in this group."""
+        super()._validate(value)
         if not (isinstance(value, Integral) and 0 <= value < self.n):
             raise ValueError("Element value must be an integer"
                              f" in the range [0, {self.n})")
@@ -113,6 +114,7 @@ class GeneralLinearGroup(Group):
 
     def _validate(self, value):
         """Ensure that value is a legitimate element value in this group."""
+        super()._validate(value)
         value = np.asarray(value)
         if not (value.shape == (self.n, self.n)):
             raise ValueError("Element value must be a "
